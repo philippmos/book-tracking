@@ -1,37 +1,27 @@
 import { Router, Request, Response } from 'express';
-import { Book } from '../models/Book';
-import { Author } from '../models/Author';
-import { BookStatus } from '../models/BookStatus.enum';
+import { IBookService } from '../services/interfaces/IBookService';
+import { inject, injectable } from 'tsyringe';
 
-import { v4 as uuidv4 } from 'uuid';
+@injectable()
+export class BookController {
+    public readonly router: Router;
+    private readonly bookService: IBookService;
 
-const router = Router();
+    constructor(
+        @inject('IBookService')bookServiceInjection: IBookService
+    ) {
+        this.bookService = bookServiceInjection;
+        this.router = Router();
+        this.initRoutes();
+    }
 
-router.get('/books', (_request: Request, response: Response) => {
-    const author: Author = {
-        id: uuidv4(),
-        name: 'Dummy Author'
+    private initRoutes(): void {
+        this.router.get('/', this.getAll);
+    }
+
+    private getAll = (_request: Request, response: Response): void => {
+        response
+            .status(200)
+            .json(this.bookService.getAll());
     };
-
-    const books: Array<Book> = [
-        {
-            id: uuidv4(),
-            title: 'Dummy Book 1',
-            author: author,
-            status: BookStatus.Wishlist
-        },
-        {
-            id: uuidv4(),
-            title: 'Dummy Book 2',
-            author: author,
-            status: BookStatus.Wishlist
-        }
-    ];
-
-
-    response
-        .status(200)
-        .json(books);
-});
-
-export default router;
+}
