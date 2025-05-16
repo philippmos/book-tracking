@@ -25,10 +25,13 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install dependencies
+        working-directory: ./api
         run: npm ci
 
       - name: 🛠️ Build the project
+        working-directory: ./api
         run: npm run build
 
       - name: 🧪 Run tests
+        working-directory: ./api
         run: npm test
