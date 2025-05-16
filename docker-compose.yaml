@@ -5,3 +5,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:4200"
+    depends_on:
+      - api
+      
+networks:
+  default:
+    driver: bridge
