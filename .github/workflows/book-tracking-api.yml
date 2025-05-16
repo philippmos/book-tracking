@@ -20,6 +20,7 @@ jobs:
           working-directory: api
           node-version: 22.15.0
           cache: 'npm'
+          cache-dependency-path: api/package-lock.json
 
       - name: 📦 Install dependencies
         working-directory: api
