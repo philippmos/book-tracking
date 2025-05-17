@@ -15,6 +15,6 @@ export function toBookStatusResponse(status: BookStatus): BookStatusResponse {
         case BookStatus.Read:
             return BookStatusResponse.Read;
         default:
-            throw new Error('Invalid book status');
+            throw new Error(`Invalid book status: ${status}`);
     }
 }
