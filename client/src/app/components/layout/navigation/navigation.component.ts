@@ -11,5 +11,4 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
-
 }

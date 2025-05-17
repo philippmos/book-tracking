@@ -13,6 +13,10 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'books/:id',
+        component: BooksOverviewComponent
+    },
+    {
         path: 'books',
         component: BooksOverviewComponent
     },

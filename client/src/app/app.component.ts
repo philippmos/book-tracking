@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './components/layout/navigation/navigation.component';
+import { BooksOverviewComponent } from './components/books/books-overview/books-overview.component';
 
 @Component({
   selector: 'app-root',
