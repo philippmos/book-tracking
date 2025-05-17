@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/philippmos/book-tracking#readme",
   "dependencies": {
+    "cors": "2.8.5",
     "express": "5.1.0",
     "reflect-metadata": "0.2.2",
     "tsyringe": "4.10.0",

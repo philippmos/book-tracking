@@ -1,10 +1,13 @@
 import express from "express";
+import cors from "cors";
 import './di-container';
 import { container } from "tsyringe";
 import { BookController } from "./controllers/BookController";
 
 const app = express();
 const port = 3001;
+
+app.use(cors());
 
 app.use((request, _response, next) => {
     console.log(`${request.method} ${request.url}`);
