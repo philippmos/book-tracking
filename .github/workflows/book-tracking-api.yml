@@ -5,10 +5,12 @@ on:
     branches: [ "main" ]
     paths:
       - 'api/**'
+      - .github/book-tracking-api.yml
   pull_request:
     branches: [ "main" ]
     paths:
       - 'api/**'
+      - .github/book-tracking-api.yml
 
 jobs:
   build:
