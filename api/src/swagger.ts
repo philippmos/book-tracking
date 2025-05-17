@@ -9,8 +9,7 @@ const options = {
       version: '1.0.0',
     },
   },
-  apis: [__dirname + '/controllers/**/*Controller.ts']
-
+  apis: [__dirname + '/controllers/**/*Controller.ts', __dirname + '/controllers/**/*Response.ts']
 };
 
 export const swaggerSpec = swaggerJSDoc(options);

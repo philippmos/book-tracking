@@ -1,22 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Book } from '../models/book';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Book, toBook } from '../models/book';
+import { Observable, map } from 'rxjs';
+import { BooksService } from '../../apiclients/booksapi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private http = inject(HttpClient);
+  private booksApiClient = inject(BooksService);
 
   getAll(): Observable<Array<Book>> {
-    const headers = {
-      accept: 'application/json'
-    };
+    const books$ = this.booksApiClient.booksGet();
 
-    const url = `${environment.apiBaseUrl}/books`;
-
-    return this.http.get<Array<Book>>(url, { headers });
+    return books$.pipe(
+      map(bookResponses => bookResponses.map(toBook))
+    );
   }
 }
