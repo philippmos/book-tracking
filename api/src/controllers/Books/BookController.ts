@@ -1,28 +1,38 @@
-import { Router, Request, Response } from 'express';
+import { Controller, Get, Route, Tags } from 'tsoa';
 import { IBookService } from '../../services/interfaces/IBookService';
 import { inject, injectable } from 'tsyringe';
-import { toBookResponse } from './Response/BookResponse';
+import { BookResponse, toBookResponse } from './Response/BookResponse';
 
+@Route('books')
+@Tags('Books')
 @injectable()
-export class BookController {
-    public readonly router: Router;
-    private readonly bookService: IBookService;
+export class BookController extends Controller {
 
     constructor(
-        @inject('IBookService')bookServiceInjection: IBookService
+        @inject('IBookService') private bookService: IBookService
     ) {
-        this.bookService = bookServiceInjection;
-        this.router = Router();
-        this.initRoutes();
+        super();
     }
 
-    private initRoutes(): void {
-        this.router.get('/', this.getAll);
-    }
-
-    private getAll = (_request: Request, response: Response): void => {
-        response
-            .status(200)
-            .json(this.bookService.getAll().map(toBookResponse));
+    /**
+     * @swagger
+     * /books:
+     *   get:
+     *     summary: Retrieve a list of all books
+     *     tags:
+     *       - Books
+     *     responses:
+     *       200:
+     *         description: A list of books
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items:
+     *                 $ref: '#/components/schemas/BookResponse'
+     */
+    @Get("/")
+    public getAll(): Array<BookResponse> {
+        return this.bookService.getAll().map(toBookResponse);
     };
 }
