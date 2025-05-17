@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
-import { IBookService } from '../services/interfaces/IBookService';
+import { IBookService } from '../../services/interfaces/IBookService';
 import { inject, injectable } from 'tsyringe';
+import { toBookResponse } from './Response/BookResponse';
 
 @injectable()
 export class BookController {
@@ -22,6 +23,6 @@ export class BookController {
     private getAll = (_request: Request, response: Response): void => {
         response
             .status(200)
-            .json(this.bookService.getAll());
+            .json(this.bookService.getAll().map(toBookResponse));
     };
 }

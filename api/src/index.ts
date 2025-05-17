@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import './di-container';
 import { container } from "tsyringe";
-import { BookController } from "./controllers/BookController";
+import { BookController } from "./controllers/Books/BookController";
 
 const app = express();
 const port = 3001;
