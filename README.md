@@ -14,3 +14,5 @@ Run `npm run start` to build and deliver the app on `http://localhost:3001`
 
 
 ## Client
+
+[![book-tracking-client](https://github.com/philippmos/book-tracking/actions/workflows/book-tracking-client.yml/badge.svg?branch=main)](https://github.com/philippmos/book-tracking/actions/workflows/book-tracking-client.yml)
