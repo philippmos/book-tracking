@@ -6,13 +6,20 @@ import { IBookService } from "./interfaces/IBookService";
 import { v4 as uuidv4 } from 'uuid';
 
 export class BookService implements IBookService {
-    getAll(): Array<Book> {
+    private books: Array<Book> = [];
+
+    constructor() {
+        this.seedInitialData();
+    }
+
+
+    private seedInitialData(): void {
         const author: Author = {
             id: uuidv4(),
             name: 'Dummy Author'
         };
 
-        const books: Array<Book> = [
+        this.books.push(
             {
                 id: uuidv4(),
                 title: 'Dummy Book 1',
@@ -23,10 +30,12 @@ export class BookService implements IBookService {
                 id: uuidv4(),
                 title: 'Dummy Book 2',
                 author: author,
-                status: BookStatus.Wishlist
+                status: BookStatus.Reading
             }
-        ];
-        
-        return books;
+        );
+    }
+
+    getAll(): Array<Book> {
+        return this.books;
     }
 }
