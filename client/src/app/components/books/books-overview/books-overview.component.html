@@ -1,0 +1,9 @@
+<h3>Books Overview</h3>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @for(book of books(); track book.id) {
+          <div class="col">
+            <app-book-card [item]="book"></app-book-card>
+        </div>
+    }
+</div>

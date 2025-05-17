@@ -1,0 +1,12 @@
+@let book = item();
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ book.title }}</h5>
+    <small>{{ book.id }}</small>
+    <p class="card-text">
+      {{ book.description }}
+    </p>
+    <button [routerLink]="['/books', book.id]" class="btn btn-dark">Details</button>
+  </div>
+</div>
