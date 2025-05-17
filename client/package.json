@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run generate-book-tracking-api-client && ng build",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "generate-book-tracking-api-client": "npx @openapitools/openapi-generator-cli generate -i http://localhost:3001/swagger.json -g typescript-angular -o src/apiclients/booksapi --additional-properties=ngVersion=15.0.0,providedIn=root"
